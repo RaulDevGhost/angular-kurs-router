@@ -1,0 +1,18 @@
+<button (click)="getAllUers()">USERS</button>
+<div *ngIf="users.length > 0">
+  <ul *ngFor="let user of users">
+    <li>{{ user.id }}</li>
+    <li>{{ user.email }}</li>
+    <li>{{ user.name }}</li>
+  </ul>
+</div>
+<button (click)="getProfile()">PROFILE</button>
+<ul *ngIf="profile">
+  <li>{{ profile.id }}</li>
+  <li>{{ profile.name }}</li>
+  <li>{{ profile.email }}</li>
+</ul>
+<div>
+  <input type="file" (change)="onLoad($event)" />
+</div>
+<img [src]="imgRta" alt="" />

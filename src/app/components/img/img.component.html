@@ -1,0 +1,10 @@
+<img
+  [src]="img"
+  (load)="loadedImg()"
+  (error)="errorImg()"
+  *ngIf="img; else elseImg"
+  alt=""
+/>
+<ng-template #elseImg>
+  <img [src]="imgEmpy" width="200" alt="" />
+</ng-template>

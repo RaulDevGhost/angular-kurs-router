@@ -1,0 +1,87 @@
+<div class="show-mobile">
+  <div>
+    <button (click)="toggleMenu()">
+      <img src="./assets/svg/icon_menu.svg" alt="menu" />
+    </button>
+    <a href="">
+      <img src="./assets/svg/logo_yard_sale.svg" alt="logo" />
+    </a>
+    <a href="">
+      <img src="./assets/svg/icon_shopping_cart.svg" alt="logo" />
+    </a>
+  </div>
+  <div class="side-menu" [class.active]="activeMenu">
+    <button (click)="toggleMenu()">Close</button>
+    <ul>
+      <li><a href="">All</a></li>
+      <li><a href="">Clothes</a></li>
+      <li><a href="">Electronics</a></li>
+    </ul>
+  </div>
+</div>
+<div class="hide-mobile">
+  <div>
+    <nav>
+      <a class="logo" href="">
+        <img src="./assets/svg/logo_yard_sale.svg" alt="logo" />
+      </a>
+      <ul>
+        <li><a href="">All</a></li>
+        <li><a href="">Clothes</a></li>
+        <li><a href="">Electronics</a></li>
+      </ul>
+    </nav>
+    <div class="info">
+      <div class="account">nicolas@nicolas.com</div>
+      <ul>
+        <li>
+          <a
+            routerLink="/products"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >Products</a
+          >
+        </li>
+        <li>
+          <div *ngIf="token.length > 0; else elseBlock">
+            <!-- <p>{{ profile.name }}</p> -->
+            you are in
+          </div>
+          <ng-template #elseBlock>
+            <a
+              routerLink="/login"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              >Login</a
+            >
+          </ng-template>
+        </li>
+        <li>
+          <a
+            routerLink="/profile"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >profile</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/registration"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            >registration</a
+          >
+        </li>
+        <li>
+          <div (click)="downloadFile()">DOWNLOAD</div>
+        </li>
+      </ul>
+      <div>
+        <a href="">
+          <img src="./assets/svg/icon_shopping_cart.svg" alt="logo" />
+        </a>
+        <span>{{ counter }}</span>
+      </div>
+    </div>
+  </div>
+</div>

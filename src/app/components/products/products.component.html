@@ -1,0 +1,15 @@
+<div class="products--grid">
+  <button (click)="createNewProduct()">NEW!!!</button>
+  <button (click)="loadMore()">LOAD MORE</button>
+  <button (click)="testZipService()">TEST!!!!</button>
+  {{ statusDetail }}
+  <app-product
+    (productEditDetail)="updateProduct($event)"
+    (addProduct)="addingCart($event)"
+    (productId)="getProduct(product.id)"
+    (deletetId)="deleteProduct(product.id)"
+    [product]="product"
+    [productDetail]="productDetail"
+    *ngFor="let product of products"
+  ></app-product>
+</div>

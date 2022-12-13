@@ -1,0 +1,42 @@
+<app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+<h2>{{ product.price | currency : "EUR" }}</h2>
+<p>{{ product.title }}</p>
+<p>{{ product.category.name }}</p>
+<button (click)="viewDetails(product.id)">VIEW</button>
+<button (click)="addToCart(product)">ADD cart</button>
+<div
+  *ngIf="productDetail"
+  [class.active]="showProductDetails"
+  class="product-detail"
+>
+  <div class="content">
+    <button (click)="viewDetails(productDetail.id)">close</button>
+    <!-- <swiper
+      [config]="config"
+      *ngIf="productDetail.images.length > 1; else elseBlockImg"
+    >
+      <ng-template swiperSlide *ngFor="let img of productDetail.images">
+        <img [src]="img" alt="" />
+      </ng-template>
+    </swiper>
+    <ng-template #elseBlockImg>
+      <app-img
+        *ngIf="productDetail.images.length > 0"
+        [img]="productDetail.images[0]"
+      ></app-img>
+    </ng-template> -->
+    <app-img
+      *ngIf="productDetail.images.length > 0"
+      [img]="productDetail.images[0]"
+    ></app-img>
+    <h2>{{ productDetail.price | currency : "EUR" }}</h2>
+    <p>{{ productDetail.title }}</p>
+    <p>uploaded : {{ today | timeAgo }}</p>
+    <p appHighlight>{{ productDetail.description }}</p>
+    <p>{{ productDetail.category.name }}</p>
+    <p>{{ productDetail.tax }}</p>
+    <button (click)="addToCart(productDetail)">ADD cart</button>
+    <button (click)="editingProduct(productDetail, product)">EDIT</button>
+    <button (click)="deleteProduct(productDetail.id)">DELETE</button>
+  </div>
+</div>

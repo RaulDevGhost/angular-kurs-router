@@ -1,0 +1,44 @@
+p,
+h2,
+h3 {
+  margin: 0;
+}
+
+.product-detail {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all ease-out 0.5s;
+  transform: translateX(100%);
+  &.active {
+    transform: translateX(0);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .gallery {
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+.swiper-slide {
+  width: 20px !important;
+}
