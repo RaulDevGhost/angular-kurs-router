@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { zip } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import {
@@ -16,11 +16,12 @@ import { forkJoin } from 'rxjs';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
   total = 0;
   productsFetchAll: Product[] = [];
   shopingCart: Product[] = [];
-  products: Product[] = [];
+  @Input() products: Product[] = [];
+  @Input() callbackFunction!: () => Product[];
   productDetail: Product = {
     id: 0,
     images: [''],
@@ -37,8 +38,6 @@ export class ProductsComponent implements OnInit {
     title: '',
     description: '',
   };
-  limit = 10;
-  offset = 0;
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
   constructor(
@@ -48,12 +47,12 @@ export class ProductsComponent implements OnInit {
     this.shopingCart = this.storeService.getShoppingCart();
   }
 
-  ngOnInit(): void {
-    this.productsService.getAllProducts().subscribe((res) => {
-      this.products = res;
-      console.log(this.products);
-    });
-  }
+  // ngOnInit(): void {
+  //   // this.productsService.getAllProducts().subscribe((res) => {
+  //   //   this.products = res;
+  //   //   console.log(this.products);
+  //   // });
+  // }
 
   //CALBBACK HELL example
   readAndUpdate(id: number): void {
@@ -203,14 +202,8 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  loadMore() {
-    this.productsService
-      .getAllProducts(this.limit, this.offset)
-      .subscribe((res) => {
-        this.products = res;
-        this.offset += this.limit;
-        console.log(this.offset);
-        console.log(this.products);
-      });
+  testLoad() {
+    console.log('heyyyy', this.callbackFunction());
+    this.products = this.callbackFunction();
   }
 }

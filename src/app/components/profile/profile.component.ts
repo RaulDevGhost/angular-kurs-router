@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { AllUsers, Profile } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { StoreService } from 'src/app/services/store.service';
-import { UsersService } from 'src/app/services/users.service';
-import { FilesService } from '../../services/files.service';
+import { Component } from "@angular/core";
+import { AllUsers, Profile } from "src/app/models/user.model";
+import { AuthService } from "src/app/services/auth.service";
+import { StoreService } from "src/app/services/store.service";
+import { UsersService } from "src/app/services/users.service";
+import { FilesService } from "../../services/files.service";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
+  selector: "app-profile",
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.scss"],
 })
 export class ProfileComponent {
   constructor(
@@ -19,13 +19,13 @@ export class ProfileComponent {
   ) {}
 
   users: AllUsers[] = [];
-  accessToke = '';
+  accessToke = "";
   profile: Profile = {
-    id: '',
-    name: '',
-    email: '',
+    id: "",
+    name: "",
+    email: "",
   };
-  imgRta = '';
+  imgRta = "";
 
   getAllUers() {
     this.usersService.getUsers().subscribe((res) => {
@@ -34,10 +34,11 @@ export class ProfileComponent {
   }
 
   getProfile() {
-    this.storeService.getToken$.subscribe((res) => {
-      this.accessToke = res;
-    });
+    // this.storeService.getToken$.subscribe((res) => {
+    //   this.accessToke = res;
+    // });
     this.authService.getProfile().subscribe((res) => {
+      console.log("get profile-->", res);
       this.profile = res;
     });
   }

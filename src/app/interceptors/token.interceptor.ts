@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
   HttpHeaders,
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { TokenService } from '../services/token.service';
+} from "@angular/common/http";
+import { Observable } from "rxjs";
+import { TokenService } from "../services/token.service";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -22,11 +22,10 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   private addToken(request: HttpRequest<unknown>) {
-    const token = localStorage.getItem('token');
-
+    const token = localStorage.getItem("token");
     if (token) {
       const authRequest = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${token}`),
+        headers: request.headers.set("Authorization", `Bearer ${token}`),
       });
       return authRequest;
     }

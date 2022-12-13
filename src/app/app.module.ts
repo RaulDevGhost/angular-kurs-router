@@ -19,6 +19,13 @@ import { UsersComponent } from './components/users/users.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { TimeInterceptor } from './interceptors/time.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { MycartComponent } from './pages/mycart/mycart.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { UserprofileComponent } from './pages/userprofile/userprofile.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +41,13 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     ProfileComponent,
     UsersComponent,
     RegistrationComponent,
+    HomeComponent,
+    NotFoundComponent,
+    CategoryComponent,
+    MycartComponent,
+    RegisterComponent,
+    RecoveryComponent,
+    UserprofileComponent,
   ],
   imports: [
     BrowserModule,

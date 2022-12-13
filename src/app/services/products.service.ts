@@ -24,7 +24,7 @@ export class ProductsService {
 
   private apiURL = `${environment.API_URL}/api/products`;
 
-  getAllProducts(limit?: number, offset?: number): Observable<Product[]> {
+  getAllProducts(limit: number, offset: number): Observable<Product[]> {
     let params = new HttpParams();
     if (limit && offset) {
       params = params.set('limit', limit);

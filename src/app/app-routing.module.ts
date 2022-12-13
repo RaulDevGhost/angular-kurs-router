@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { ProductsComponent } from './components/products/products.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { RegistrationComponent } from './components/registration/registration.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { MycartComponent } from './pages/mycart/mycart.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { UserprofileComponent } from './pages/userprofile/userprofile.component';
 
 const routes: Routes = [
-  { path: '', component: ProductsComponent },
-  { path: 'products', component: ProductsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'registration', component: RegistrationComponent },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  { path: 'home', component: HomeComponent },
+  { path: 'category', component: CategoryComponent },
+  { path: 'my-cart', component: MycartComponent },
+  { path: 'recovery', component: RecoveryComponent },
+  { path: 'registration', component: RegisterComponent },
+  { path: 'profile', component: UserprofileComponent },
 ];
 
 @NgModule({
