@@ -202,8 +202,7 @@ export class ProductsComponent {
     });
   }
 
-  testLoad() {
-    console.log('heyyyy', this.callbackFunction());
+  load() {
     this.products = this.callbackFunction();
   }
 }

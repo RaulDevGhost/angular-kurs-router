@@ -2,6 +2,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 
+const limitieren = 10;
+let offsetting = 10;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -25,10 +28,10 @@ export class HomeComponent implements OnInit {
 
   loadMore() {
     this.productsService
-      .getAllProducts(this.limit, this.offset)
+      .getAllProducts(limitieren, offsetting)
       .subscribe((res) => {
         this.products = res;
-        this.offset += this.limit;
+        offsetting += limitieren;
       });
 
     return this.products;
