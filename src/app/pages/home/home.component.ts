@@ -26,14 +26,23 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  loadMore() {
-    this.productsService
-      .getAllProducts(limitieren, offsetting)
-      .subscribe((res) => {
-        this.products = res;
-        offsetting += limitieren;
-      });
+  // loadMore() {
+  //   this.productsService
+  //     .getAllProducts(limitieren, offsetting)
+  //     .subscribe((res) => {
+  //       this.products = res;
+  //       offsetting += limitieren;
+  //     });
 
-    return this.products;
+  //   return this.products;
+  // }
+
+  onLoadMoreHome() {
+    this.productsService
+      .getAllProducts(this.limit, this.offset)
+      .subscribe((res) => {
+        this.products = this.products.concat(res);
+        this.offset += this.limit;
+      });
   }
 }

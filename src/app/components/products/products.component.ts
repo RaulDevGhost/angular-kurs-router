@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { zip } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import {
@@ -22,6 +22,7 @@ export class ProductsComponent {
   shopingCart: Product[] = [];
   @Input() products: Product[] = [];
   @Input() callbackFunction!: () => Product[];
+  @Output() loadMore = new EventEmitter();
   productDetail: Product = {
     id: 0,
     images: [''],
@@ -202,7 +203,11 @@ export class ProductsComponent {
     });
   }
 
-  load() {
-    this.products = this.callbackFunction();
+  // load() {
+  //   this.products = this.callbackFunction();
+  // }
+
+  onLoadMore() {
+    this.loadMore.emit();
   }
 }
