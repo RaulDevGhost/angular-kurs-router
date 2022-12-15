@@ -1,16 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("./styles/reset.scss");
-@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-@import "swiper/scss";
-@import "swiper/scss/navigation";
-@import "swiper/scss/pagination";
-@import "sweetalert2/src/sweetalert2.scss";
+@import url('./styles/reset.scss');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+@import 'sweetalert2/src/sweetalert2.scss';
 
 * {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .products--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 5rem;
+  align-items: center;
+  justify-items: center;
+  padding: 1rem;
   app-img {
     img {
       border-radius: 10px;

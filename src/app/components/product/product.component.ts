@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product, UpdateProductDTO } from '../../models/product.model';
-import SwiperCore, { SwiperOptions } from 'swiper';
+import { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-product',
@@ -63,13 +63,14 @@ export class ProductComponent {
   today = new Date();
 
   addToCart(product: Product) {
+    console.log('adding carttttt--->', product);
     this.addProduct.emit(product);
   }
-  viewDetails(id: number) {
-    this.showProductDetails = !this.showProductDetails;
-    this.productId.emit(id);
-    console.log('productDetail', this.productDetail);
-  }
+  // viewDetails(id: number) {
+  //   console.log('productDetail', this.productDetail, this.product);
+  //   this.showProductDetails = !this.showProductDetails;
+  //   this.productId.emit(id);
+  // }
 
   editingProduct(productDetail: Product, changes2: UpdateProductDTO) {
     const id = productDetail.id;

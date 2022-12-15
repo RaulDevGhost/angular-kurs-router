@@ -26,6 +26,7 @@ import { MycartComponent } from './pages/mycart/mycart.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { UserprofileComponent } from './pages/userprofile/userprofile.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { UserprofileComponent } from './pages/userprofile/userprofile.component'
     RegisterComponent,
     RecoveryComponent,
     UserprofileComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

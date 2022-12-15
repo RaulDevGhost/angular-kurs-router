@@ -12,6 +12,7 @@ import {
   Product,
   CreateProductDTO,
   UpdateProductDTO,
+  Catergoy,
 } from '../models/product.model';
 import { environment } from '../../environments/environment';
 import { checkTime } from '../interceptors/time.interceptor';
@@ -22,7 +23,7 @@ import { checkTime } from '../interceptors/time.interceptor';
 export class ProductsService {
   constructor(private http: HttpClient) {}
 
-  private apiURL = `${environment.API_URL}/api/products`;
+  private apiURL = `${environment.API_URL}`;
 
   getAllProducts(limit: number, offset: number): Observable<Product[]> {
     let params = new HttpParams();
@@ -31,7 +32,10 @@ export class ProductsService {
       params = params.set('offset', offset);
     }
     return this.http
-      .get<Product[]>(`${this.apiURL}`, { params, context: checkTime() })
+      .get<Product[]>(`${this.apiURL}/api/products`, {
+        params,
+        context: checkTime(),
+      })
       .pipe(
         retry(3),
         map((products) =>
@@ -72,8 +76,8 @@ export class ProductsService {
     return throwError(() => `ERROR SERVER -> ${err.message}`);
   }
 
-  getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(`${this.apiURL}/${id}`).pipe(
+  getProduct(id: number | string): Observable<Product> {
+    return this.http.get<Product>(`${this.apiURL}/api/products/${id}`).pipe(
       map((data) => {
         return {
           ...data,
@@ -85,14 +89,30 @@ export class ProductsService {
   }
 
   createProduct(product: CreateProductDTO): Observable<Product> {
-    return this.http.post<Product>(this.apiURL, product);
+    return this.http.post<Product>(`${this.apiURL}/api/products`, product);
   }
 
   updateProduct(id: number, product: UpdateProductDTO): Observable<Product> {
-    return this.http.put<Product>(`${this.apiURL}/${id}`, product);
+    return this.http.put<Product>(`${this.apiURL}/api/products/${id}`, product);
   }
 
   deleteProduct(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(`${this.apiURL}/${id}`);
+    return this.http.delete<boolean>(`${this.apiURL}/api/products/${id}`);
+  }
+
+  getCategoriesbyId(categoryId: string, limit?: number, offset?: number) {
+    let params = new HttpParams();
+    if (limit && offset) {
+      params = params.set('limit', limit);
+      params = params.set('offset', offset);
+    }
+    return this.http.get<Product[]>(
+      `${this.apiURL}/api/categories/${categoryId}/products`,
+      { params }
+    );
+  }
+
+  getAllCategories() {
+    return this.http.get<Catergoy[]>(`${this.apiURL}/api/categories`);
   }
 }

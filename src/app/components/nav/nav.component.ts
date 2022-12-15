@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Profile } from 'src/app/models/user.model';
 import { StoreService } from '../../services/store.service';
 import { FilesService } from '../../services/files.service';
+import { ProductsService } from 'src/app/services/products.service';
+import { Catergoy } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-nav',
@@ -17,10 +19,12 @@ export class NavComponent implements OnInit {
     name: '',
     email: '',
   };
+  categories: Catergoy[] = [];
 
   constructor(
     private storeService: StoreService,
-    private filesService: FilesService
+    private filesService: FilesService,
+    private productsService: ProductsService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +33,11 @@ export class NavComponent implements OnInit {
     });
     this.storeService.getToken$.subscribe((res) => {
       this.token = res;
+    });
+
+    this.productsService.getAllCategories().subscribe((res) => {
+      console.log('categories', res);
+      this.categories = res;
     });
   }
 

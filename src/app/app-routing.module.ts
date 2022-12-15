@@ -7,6 +7,7 @@ import { MycartComponent } from './pages/mycart/mycart.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { UserprofileComponent } from './pages/userprofile/userprofile.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -15,11 +16,16 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'home', component: HomeComponent },
-  { path: 'category', component: CategoryComponent },
+  { path: 'category/:id', component: CategoryComponent },
+  { path: 'product/:id', component: ProductDetailComponent },
   { path: 'my-cart', component: MycartComponent },
   { path: 'recovery', component: RecoveryComponent },
   { path: 'registration', component: RegisterComponent },
   { path: 'profile', component: UserprofileComponent },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({

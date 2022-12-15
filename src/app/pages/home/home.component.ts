@@ -2,9 +2,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 
-const limitieren = 10;
-let offsetting = 10;
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

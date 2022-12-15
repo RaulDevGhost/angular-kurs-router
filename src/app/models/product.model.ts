@@ -1,4 +1,4 @@
-interface Catergoy {
+export interface Catergoy {
   id: number;
   name: string;
   typeImg: string;
